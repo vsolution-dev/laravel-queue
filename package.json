@@ -2,7 +2,6 @@
   "name": "@vsolution-dev/laravel-queue",
   "version": "1.0.3",
   "description": "",
-  "type": "module",
   "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.esm.js",
   "types": "dist/types/index.d.ts",
