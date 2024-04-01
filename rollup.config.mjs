@@ -6,7 +6,7 @@ export default {
     { file: 'dist/bundle.cjs.js', format: 'cjs', sourcemap: true },
     { file: 'dist/bundle.esm.js', format: 'es', sourcemap: true }
   ],
-  external: ['googleapis'],
+  external: ['ioredis'],
   plugins: [
     typescript(),
   ],
