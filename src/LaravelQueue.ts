@@ -64,13 +64,13 @@ export class LaravelQueue {
 
   public async pop<Job extends LaravelJob>(queue: string = null): Promise<Job> {
     do {
-      const [ , value ] = await this.subscriber.blpop(this.getQueue(queue), 1000 * 60);
-      if ( ! value) {
-        await sleep(500);
+      const response = await this.subscriber.blpop(this.getQueue(queue), 1);
+      if ( ! response) {
+        await sleep(300);
         continue;
       }
 
-      const { data } = JSON.parse(value);
+      const { data } = JSON.parse(response[1]);
 
       return PHP.parse(data.command);
     } while (true);
