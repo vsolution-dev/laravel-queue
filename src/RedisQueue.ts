@@ -16,7 +16,7 @@ export class RedisQueue extends Queue {
     this.subscriber = new Redis(options);
   }
 
-  public async pop<Job extends LaravelJob>(queue: string = null): Promise<Job> {
+  public async pop<Job extends LaravelJob>(queue: string): Promise<Job> {
     const element = await this.subscriber.lpop(this.getQueue(queue));
     if ( ! element) {
       return null;
@@ -26,7 +26,7 @@ export class RedisQueue extends Queue {
     return PHP.parse(data.command);
   }
 
-  public async push<Job extends LaravelJob>(job: Job, queue: string = null) {
+  public async push<Job extends LaravelJob>(job: Job, queue: string) {
     const payload = JSON.stringify(this.createPayload(job));
     await this.publisher.rpush(this.getQueue(queue), payload);
   }

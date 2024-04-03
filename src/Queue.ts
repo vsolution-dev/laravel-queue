@@ -15,7 +15,7 @@ const uuid = () => {
 
 export abstract class Queue {
 
-  getQueue(queue = null) {
+  getQueue(queue: string) {
     return `queues:${queue}`;
   }
 
