@@ -1,13 +1,14 @@
 {
   "name": "@vsolution-dev/laravel-queue",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "build": "rm -rf ./dist && rollup --config",
-    "dev": "node --loader ts-node/esm ./src/index.ts"
+    "clean": "rm -rf ./dist",
+    "build": "npm run clean && NODE_ENV=production rollup --config rollup.config.ts --configPlugin typescript",
+    "dev": "rollup --config rollup.config.ts --configPlugin typescript --watch"
   },
   "files": [
     "dist",
@@ -17,6 +18,8 @@
   "author": "chamyeongdo <chamyeongdo@vsolution.dev>",
   "license": "MIT",
   "devDependencies": {
+    "@rollup/plugin-alias": "^5.1.0",
+    "@rollup/plugin-run": "^3.0.2",
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/node": "^20.11.30",
     "rollup": "^4.13.0",
