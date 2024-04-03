@@ -9,7 +9,7 @@ export class RedisQueue extends Queue {
   private readonly publisher: Redis;
   private readonly subscriber: Redis;
 
-  constructor (options: RedisOptions = {}) {
+  constructor (options: RedisOptions) {
     super();
 
     this.publisher = new Redis(options);
