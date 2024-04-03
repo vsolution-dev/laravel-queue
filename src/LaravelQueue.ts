@@ -8,12 +8,11 @@ export const sleep = (milliseconds: number) => {
 export class LaravelQueue {
 
   constructor (
-    private readonly driver: Queue,
-    private readonly queue: string[],
+    private readonly driver: Queue
   ) {
   }
 
-  async pop<Job extends LaravelJob>(queue: string): Promise<Job> {
+  async pop<Job extends LaravelJob>(queue: string[]): Promise<Job> {
     do {
       for (let index = 0; index < queue.length; ++index) {
         const job = await this.driver.pop<Job>(queue[index]);
