@@ -12,11 +12,15 @@ export class LaravelQueue {
   ) {
   }
 
+  size(queue: string) {
+    return this.driver.size(queue);
+  }
+
   async pop<Job extends LaravelJob>(queue: string[]): Promise<Job> {
     do {
       for (let index = 0; index < queue.length; ++index) {
         const job = await this.driver.pop<Job>(queue[index]);
-        if (job !== null) {
+        if (job) {
           return job;
         }
       }

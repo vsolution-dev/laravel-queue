@@ -37,6 +37,7 @@ export abstract class Queue {
     };
   }
 
+  abstract size(queue: string): Promise<number>;
   abstract pop<Job extends LaravelJob>(queue: string): Promise<Job>;
   abstract push<Job extends LaravelJob>(job: Job, queue: string): Promise<void>;
 }

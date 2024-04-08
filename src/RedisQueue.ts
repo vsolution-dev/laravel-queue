@@ -16,6 +16,14 @@ export class RedisQueue extends Queue {
     this.subscriber = new Redis(options);
   }
 
+  public async size(queue: string) {
+    try {
+      return await this.subscriber.llen(this.getQueue(queue));
+    } catch (error) {
+      return 0;
+    }
+  }
+
   public async pop<Job extends LaravelJob>(queue: string): Promise<Job> {
     const element = await this.subscriber.lpop(this.getQueue(queue));
     if ( ! element) {
