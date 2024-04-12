@@ -3,18 +3,7 @@ import * as PHP from "@/PhpSerializer";
 
 import crypto from "crypto";
 
-const uuid = () => {
-  return [1e7]
-    .concat(-1e3, -4e3, -8e3, -1e11)
-    .join('')
-    .replace(/[018]/g, (character: string): string => {
-      const value = crypto.getRandomValues(new Uint8Array(1))[0];
-      return (Number(character) ^ value & 15 >> Number(character) / 4).toString(16);
-    });
-}
-
 export abstract class Queue {
-
   getQueue(queue: string) {
     return `queues:${queue}`;
   }
@@ -22,7 +11,7 @@ export abstract class Queue {
   createPayload<Job extends LaravelJob>(job: Job) {
     return {
       id: crypto.randomBytes(32).toString("hex"),
-      uuid: uuid(),
+      uuid: crypto.randomBytes(32).toString('hex'),
       displayName: job['___PHP_CLASS___'],
       job: 'Illuminate\\Queue\\CallQueuedHandler@call',
       maxTries: null,

@@ -1,11 +1,16 @@
 import { LaravelJob } from "@/LaravelJob";
 import { Queue } from "@/Queue";
+import { RedisOptions } from "ioredis";
+import { RedisQueue } from "@/RedisQueue";
 
 export const sleep = (milliseconds: number) => {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
 
 export class LaravelQueue {
+  static redis(options: RedisOptions) {
+    return new LaravelQueue(new RedisQueue(options));
+  }
 
   constructor (
     private readonly driver: Queue
