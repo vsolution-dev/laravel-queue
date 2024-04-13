@@ -11,7 +11,7 @@ export abstract class Queue {
   createPayload<Job extends LaravelJob>(job: Job) {
     return {
       id: crypto.randomBytes(32).toString("hex"),
-      uuid: crypto.randomBytes(32).toString('hex'),
+      uuid: crypto.randomUUID(),
       displayName: job['___PHP_CLASS___'],
       job: 'Illuminate\\Queue\\CallQueuedHandler@call',
       maxTries: null,
