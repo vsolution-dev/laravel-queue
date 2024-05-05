@@ -1,7 +1,9 @@
+import { ClusterNode, RedisOptions } from "ioredis";
+
 import { LaravelJob } from "@/LaravelJob";
 import { Queue } from "@/Queue";
-import { RedisOptions } from "ioredis";
 import { RedisQueue } from "@/RedisQueue";
+import { RedisClusterQueue } from "@/RedisClusterQueue";
 
 export const sleep = (milliseconds: number) => {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
@@ -10,6 +12,10 @@ export const sleep = (milliseconds: number) => {
 export class LaravelQueue {
   static redis(options: RedisOptions) {
     return new LaravelQueue(new RedisQueue(options));
+  }
+
+  static redisCluster(nodes: ClusterNode[], options: RedisOptions) {
+    return new LaravelQueue(new RedisClusterQueue(nodes, options));
   }
 
   constructor (
