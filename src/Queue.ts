@@ -1,5 +1,5 @@
-import { LaravelJob } from "@/LaravelJob";
-import * as PHP from "@/PhpSerializer";
+import { LaravelJob } from "./LaravelJob";
+import * as PHP from "./PhpSerializer";
 
 import crypto from "crypto";
 

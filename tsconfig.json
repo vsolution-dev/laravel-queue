@@ -11,10 +11,8 @@
 
     "rootDir": "src",
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    },
 
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true
   }
 }

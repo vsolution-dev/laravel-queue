@@ -1,6 +1,6 @@
 {
   "name": "@vsolution-dev/laravel-queue",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "",
   "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.esm.js",
@@ -18,16 +18,15 @@
   "author": "chamyeongdo <chamyeongdo@vsolution.dev>",
   "license": "MIT",
   "devDependencies": {
-    "@rollup/plugin-alias": "^5.1.0",
-    "@rollup/plugin-run": "^3.0.2",
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/node": "^20.11.30",
+    "@types/ioredis": "^5.0.0",
     "rollup": "^4.13.0",
     "ts-node": "^10.9.2",
     "tslib": "^2.6.2",
     "typescript": "^5.4.2"
   },
-  "dependencies": {
+  "peerDependencies": {
     "ioredis": "^5.3.2"
   }
 }

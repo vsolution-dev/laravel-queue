@@ -1,6 +1,6 @@
-import * as PHP from "@/PhpSerializer";
-import { LaravelJob } from "@/LaravelJob";
-import { Queue } from "@/Queue";
+import * as PHP from "./PhpSerializer";
+import { LaravelJob } from "./LaravelJob";
+import { Queue } from "./Queue";
 
 import Redis, {
   Cluster,
